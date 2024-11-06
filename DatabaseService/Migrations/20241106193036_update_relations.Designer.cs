@@ -3,6 +3,7 @@ using System;
 using DatabaseService.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatabaseService.Migrations
 {
     [DbContext(typeof(MeasurementsContext))]
-    partial class MeasurementsContextModelSnapshot : ModelSnapshot
+    [Migration("20241106193036_update_relations")]
+    partial class update_relations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace DatabaseService.Migrations
                     b.Property<string>("PatientSsn")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("SeenDoctorId")
+                    b.Property<int>("SeenDoctorId")
                         .HasColumnType("int");
 
                     b.Property<int>("Systolic")
@@ -90,7 +93,9 @@ namespace DatabaseService.Migrations
 
                     b.HasOne("DatabaseService.Models.DoctorModel", "Seen")
                         .WithMany()
-                        .HasForeignKey("SeenDoctorId");
+                        .HasForeignKey("SeenDoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Patient");
 
