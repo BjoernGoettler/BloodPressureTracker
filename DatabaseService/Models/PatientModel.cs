@@ -8,5 +8,5 @@ public class PatientModel
     public string Ssn { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
-    public MeasurementsModel Measurements { get; set; } = new MeasurementsModel();
+    public ICollection<MeasurementsModel>? Measurements { get; set; }
 }
