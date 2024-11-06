@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace DatabaseService.Models;
 
+[PrimaryKey(nameof(MeasurementId))]
 public class MeasurementsModel
 {
     public MeasurementsModel()
