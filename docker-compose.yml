@@ -18,6 +18,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    depends_on:
+      - seq
   seq:
     image: datalust/seq
     ports:
@@ -27,6 +29,13 @@ services:
       - loggingvolume:/data
     environment:
       - ACCEPT_EULA=Y
+  patientservice:
+    build:
+      context: .
+      dockerfile: PatientService/Dockerfile
+    depends_on:
+      database:
+        condition: service_healthy
 volumes:
   measurementsvolume:
   loggingvolume:
