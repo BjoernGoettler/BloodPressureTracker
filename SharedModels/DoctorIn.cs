@@ -1,4 +1,4 @@
-namespace DatabaseService.DataInOutObjects;
+namespace SharedModels;
 
 public class DoctorIn
 {

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoring", "Monitoring\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientService", "PatientService\PatientService.csproj", "{1BBB7A3E-B1D9-427B-BA73-5E19C9401060}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModels", "SharedModels\SharedModels.csproj", "{06B548BF-0718-41C5-B276-277D90C8AD95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{1BBB7A3E-B1D9-427B-BA73-5E19C9401060}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BBB7A3E-B1D9-427B-BA73-5E19C9401060}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BBB7A3E-B1D9-427B-BA73-5E19C9401060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B548BF-0718-41C5-B276-277D90C8AD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B548BF-0718-41C5-B276-277D90C8AD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B548BF-0718-41C5-B276-277D90C8AD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B548BF-0718-41C5-B276-277D90C8AD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

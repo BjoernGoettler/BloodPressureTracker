@@ -1,4 +1,4 @@
-using DatabaseService.DataInOutObjects;
+using SharedModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DatabaseService.Models;
