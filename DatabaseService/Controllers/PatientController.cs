@@ -4,6 +4,8 @@ using DatabaseService.DataInOutObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DatabaseService.Models;
+using MySql.Data.MySqlClient;
+using Polly;
 
 namespace DatabaseService.Controllers
 {
@@ -12,10 +14,12 @@ namespace DatabaseService.Controllers
     public class PatientController: ControllerBase
     {
         private readonly MeasurementsContext _context;
+        private readonly AsyncPolicy _retryInsertPolicy;
 
         public PatientController(MeasurementsContext context)
         {
             _context = context;
+            _retryInsertPolicy = Policy.Handle<MySqlException>().WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
 
         [HttpPost]
@@ -55,7 +59,7 @@ namespace DatabaseService.Controllers
             patient.Measurements.Add(measurement);
             
             //_context.Patients.Update(patient);
-            await _context.SaveChangesAsync();
+            await _retryInsertPolicy.ExecuteAsync(async () => await _context.SaveChangesAsync());
             _context.Patients.Update(patient);
             
             var patientMeasurementOut = new PatientMeasurementsOut
