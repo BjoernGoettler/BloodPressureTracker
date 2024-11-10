@@ -5,3 +5,18 @@ services:
       - "8080:8080"
     volumes:
       - ./docs:/usr/local/structurizr
+  database:
+    image: mysql:8.0.40-bookworm
+    ports:
+      - "3306:3306"
+    env_file:
+      - database.env
+    volumes:
+      - measurementsvolume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  measurementsvolume:
