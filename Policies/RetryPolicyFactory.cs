@@ -7,11 +7,15 @@ public static class RetryPolicyFactory
 {
     static RetryPolicyFactory()
     {
-        
+        // Static constructor; can be used to initialize static members, if any
     }
 
-    public static AsyncPolicy Create<T>(Exception exception)
+    public static AsyncRetryPolicy CreateAsyncRetryPolicy<T>(int retryCount, Func<int, TimeSpan> sleepDurationProvider) where T : Exception
     {
-        return new AsyncPolicy<T>(_ => Task.FromResult(exception));
+        // Create and configure the retry policy
+        return Policy
+            .Handle<T>(ex => ex is T)
+            .WaitAndRetryAsync(retryCount, sleepDurationProvider);
+       
     }
 }
