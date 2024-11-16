@@ -1,11 +1,12 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using DatabaseService.DataInOutObjects;
+using SharedModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DatabaseService.Models;
 using MySql.Data.MySqlClient;
 using Polly;
+using SharedModels;
 
 namespace DatabaseService.Controllers
 {
