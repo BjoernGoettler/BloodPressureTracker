@@ -20,6 +20,30 @@ services:
       retries: 5
     depends_on:
       - seq
+  databaseservice:
+    build:
+      context: .
+      dockerfile: DatabaseService/Dockerfile
+    image: larsvegascph/databaseservice
+    depends_on:
+      database:
+        condition: service_healthy
+  patientservice:
+    build:
+      context: .
+      dockerfile: PatientService/Dockerfile
+    image: larsvegascph/patientservice
+    depends_on:
+      databaseservice:
+        condition: service_healthy
+  doctorservice:
+    build:
+      context: .
+      dockerfile: DoctorService/Dockerfile
+    image: larsvegascph/doctorservice
+    depends_on:
+      databaseservice:
+        condition: service_healthy
   seq:
     image: datalust/seq
     ports:
@@ -29,13 +53,6 @@ services:
       - loggingvolume:/data
     environment:
       - ACCEPT_EULA=Y
-  patientservice:
-    build:
-      context: .
-      dockerfile: PatientService/Dockerfile
-    depends_on:
-      database:
-        condition: service_healthy
 volumes:
   measurementsvolume:
   loggingvolume:
