@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
+        <PackageReference Include="RestSharp" Version="112.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
@@ -22,6 +23,11 @@
       <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
       <ProjectReference Include="..\Policies\Policies.csproj" />
       <ProjectReference Include="..\SharedModels\SharedModels.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>
