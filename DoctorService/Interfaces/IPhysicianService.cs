@@ -4,6 +4,6 @@ namespace DoctorService.Interfaces;
 
 public interface IPhysicianService
 {
-    DoctorOut AddDoctor(DoctorIn doctorIn);
-    MeasurementOut GetMeasurement(int measurementId);
+    Task<DoctorOut> AddDoctor(DoctorIn doctorIn);
+    Task<MeasurementOut> GetMeasurement(int measurementId);
 }
