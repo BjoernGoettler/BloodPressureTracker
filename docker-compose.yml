@@ -44,6 +44,14 @@ services:
     depends_on:
       databaseservice:
         condition: service_healthy
+  measureservice:
+    build:
+      context: .
+      dockerfile: MeasureService/Dockerfile
+    image: larsvegascph/measureservice
+    depends_on:
+      databaseservice:
+        condition: service_healthy
   seq:
     image: datalust/seq
     ports:
