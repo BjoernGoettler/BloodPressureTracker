@@ -33,20 +33,7 @@ jobs:
             echo "Docker Access Token is not set"
           fi
 
-      - name: Build DatabaseService Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/database-service:latest ./DatabaseService
-
-      - name: Build PatientService Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/patient-service:latest ./PatientService
-
-      - name: Build DoctorService Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/doctor-service:latest ./DoctorService
-
-      - name: Push DatabaseService Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/database-service:latest
-
-      - name: Push PatientService Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/patient-service:latest
-
-      - name: Push DoctorService Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/doctor-service:latest
+      - name: Build and Push Docker Images
+        run: |
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml push
