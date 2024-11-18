@@ -4,7 +4,7 @@
 
 - [x] Patient Service
 - [x] Database
-- [ ] Measurement Service
+- [x] Measurement Service
 - [x] Doctor Service - Not mandatory, but used to work with dependency injections of retry-policies 
 
 ## Mandatory topics
@@ -13,5 +13,5 @@
 - [x] Async design
 - [x] Fault isolation
 - [x] Design to be disabled
-- [ ] Green Software Architecture
+- [x] Green Software Architecture
 
